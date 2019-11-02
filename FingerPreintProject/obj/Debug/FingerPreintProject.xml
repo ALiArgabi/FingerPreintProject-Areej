@@ -32,5 +32,10 @@ FingerPreintProject
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:FingerPreintProject.My.Resources.Resources.SaveME">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 </members>
 </doc>

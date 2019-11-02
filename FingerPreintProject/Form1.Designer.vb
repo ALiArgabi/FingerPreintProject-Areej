@@ -39,7 +39,7 @@ Partial Class Form1
         Me.Label_PatientName = New System.Windows.Forms.Label()
         Me.TextBox_PatientID = New System.Windows.Forms.TextBox()
         Me.Panel_RegisterFingerPrient = New System.Windows.Forms.Panel()
-        Me.ButtonOK = New System.Windows.Forms.Button()
+        Me.Button_Done = New System.Windows.Forms.Button()
         Me.Panel_Images = New System.Windows.Forms.Panel()
         Me.CheckBox_ReaderConnected = New System.Windows.Forms.CheckBox()
         Me.PictureBoxSample_2 = New System.Windows.Forms.PictureBox()
@@ -77,13 +77,13 @@ Partial Class Form1
         Me.Label_PatientID.Location = New System.Drawing.Point(6, 15)
         Me.Label_PatientID.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label_PatientID.Name = "Label_PatientID"
-        Me.Label_PatientID.Size = New System.Drawing.Size(111, 27)
+        Me.Label_PatientID.Size = New System.Drawing.Size(236, 27)
         Me.Label_PatientID.TabIndex = 0
-        Me.Label_PatientID.Text = "Patient ID"
+        Me.Label_PatientID.Text = "Patient ID - هوية المريض"
         '
         'Panel_RegistrationInfo
         '
-        Me.Panel_RegistrationInfo.BackColor = System.Drawing.SystemColors.Control
+        Me.Panel_RegistrationInfo.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Panel_RegistrationInfo.Controls.Add(Me.Button1)
         Me.Panel_RegistrationInfo.Controls.Add(Me.ComboBox_BloodType)
         Me.Panel_RegistrationInfo.Controls.Add(Me.Label_BloodType)
@@ -108,11 +108,11 @@ Partial Class Form1
         '
         Me.Button1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.Location = New System.Drawing.Point(347, 553)
+        Me.Button1.Location = New System.Drawing.Point(327, 553)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(116, 50)
+        Me.Button1.Size = New System.Drawing.Size(136, 50)
         Me.Button1.TabIndex = 13
-        Me.Button1.Text = "Next"
+        Me.Button1.Text = "Next - التالي"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'ComboBox_BloodType
@@ -120,7 +120,7 @@ Partial Class Form1
         Me.ComboBox_BloodType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox_BloodType.FormattingEnabled = True
         Me.ComboBox_BloodType.Items.AddRange(New Object() {"O−", "O+", "A−", "A+", "B−", "B+", "AB−", "AB+"})
-        Me.ComboBox_BloodType.Location = New System.Drawing.Point(227, 235)
+        Me.ComboBox_BloodType.Location = New System.Drawing.Point(334, 235)
         Me.ComboBox_BloodType.Name = "ComboBox_BloodType"
         Me.ComboBox_BloodType.Size = New System.Drawing.Size(95, 34)
         Me.ComboBox_BloodType.TabIndex = 12
@@ -131,9 +131,9 @@ Partial Class Form1
         Me.Label_BloodType.Location = New System.Drawing.Point(6, 238)
         Me.Label_BloodType.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label_BloodType.Name = "Label_BloodType"
-        Me.Label_BloodType.Size = New System.Drawing.Size(197, 27)
+        Me.Label_BloodType.Size = New System.Drawing.Size(295, 27)
         Me.Label_BloodType.TabIndex = 11
-        Me.Label_BloodType.Text = "Patient Blood Type"
+        Me.Label_BloodType.Text = "Patient Blood Type - فصيلة الدم"
         '
         'GroupBox_ExtraInfo
         '
@@ -141,12 +141,12 @@ Partial Class Form1
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox_ExtraInfo.Controls.Add(Me.TextBox_ExtraInfo)
-        Me.GroupBox_ExtraInfo.Location = New System.Drawing.Point(11, 316)
+        Me.GroupBox_ExtraInfo.Location = New System.Drawing.Point(11, 299)
         Me.GroupBox_ExtraInfo.Name = "GroupBox_ExtraInfo"
-        Me.GroupBox_ExtraInfo.Size = New System.Drawing.Size(768, 209)
+        Me.GroupBox_ExtraInfo.Size = New System.Drawing.Size(768, 237)
         Me.GroupBox_ExtraInfo.TabIndex = 10
         Me.GroupBox_ExtraInfo.TabStop = False
-        Me.GroupBox_ExtraInfo.Text = "Extra Info"
+        Me.GroupBox_ExtraInfo.Text = "More Information - معلومات أكثر"
         '
         'TextBox_ExtraInfo
         '
@@ -155,14 +155,14 @@ Partial Class Form1
         Me.TextBox_ExtraInfo.Multiline = True
         Me.TextBox_ExtraInfo.Name = "TextBox_ExtraInfo"
         Me.TextBox_ExtraInfo.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextBox_ExtraInfo.Size = New System.Drawing.Size(762, 176)
+        Me.TextBox_ExtraInfo.Size = New System.Drawing.Size(762, 204)
         Me.TextBox_ExtraInfo.TabIndex = 0
         '
         'Label_DOBFormat
         '
         Me.Label_DOBFormat.AutoSize = True
         Me.Label_DOBFormat.Font = New System.Drawing.Font("Times New Roman", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label_DOBFormat.Location = New System.Drawing.Point(517, 175)
+        Me.Label_DOBFormat.Location = New System.Drawing.Point(612, 177)
         Me.Label_DOBFormat.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label_DOBFormat.Name = "Label_DOBFormat"
         Me.Label_DOBFormat.Size = New System.Drawing.Size(134, 27)
@@ -175,15 +175,15 @@ Partial Class Form1
         Me.Label_DOB.Location = New System.Drawing.Point(6, 177)
         Me.Label_DOB.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label_DOB.Name = "Label_DOB"
-        Me.Label_DOB.Size = New System.Drawing.Size(136, 27)
+        Me.Label_DOB.Size = New System.Drawing.Size(258, 27)
         Me.Label_DOB.TabIndex = 8
-        Me.Label_DOB.Text = "Patient DOB"
+        Me.Label_DOB.Text = "Patient DOB - تاريخ الميلاد "
         '
         'Date_DOB
         '
         Me.Date_DOB.CustomFormat = "dd/MM/yyyy"
         Me.Date_DOB.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.Date_DOB.Location = New System.Drawing.Point(227, 170)
+        Me.Date_DOB.Location = New System.Drawing.Point(334, 175)
         Me.Date_DOB.Name = "Date_DOB"
         Me.Date_DOB.Size = New System.Drawing.Size(269, 34)
         Me.Date_DOB.TabIndex = 7
@@ -191,22 +191,22 @@ Partial Class Form1
         'RadioButton_Female
         '
         Me.RadioButton_Female.AutoSize = True
-        Me.RadioButton_Female.Location = New System.Drawing.Point(393, 117)
+        Me.RadioButton_Female.Location = New System.Drawing.Point(592, 124)
         Me.RadioButton_Female.Name = "RadioButton_Female"
-        Me.RadioButton_Female.Size = New System.Drawing.Size(103, 31)
+        Me.RadioButton_Female.Size = New System.Drawing.Size(154, 31)
         Me.RadioButton_Female.TabIndex = 6
         Me.RadioButton_Female.TabStop = True
-        Me.RadioButton_Female.Text = "Female"
+        Me.RadioButton_Female.Text = "Female - أنثى"
         Me.RadioButton_Female.UseVisualStyleBackColor = True
         '
         'RadioButton_Male
         '
         Me.RadioButton_Male.AutoSize = True
-        Me.RadioButton_Male.Location = New System.Drawing.Point(227, 117)
+        Me.RadioButton_Male.Location = New System.Drawing.Point(334, 124)
         Me.RadioButton_Male.Name = "RadioButton_Male"
-        Me.RadioButton_Male.Size = New System.Drawing.Size(82, 31)
+        Me.RadioButton_Male.Size = New System.Drawing.Size(131, 31)
         Me.RadioButton_Male.TabIndex = 5
-        Me.RadioButton_Male.Text = "Male"
+        Me.RadioButton_Male.Text = "Male - ذكر"
         Me.RadioButton_Male.UseVisualStyleBackColor = True
         '
         'Label_Gender
@@ -215,15 +215,15 @@ Partial Class Form1
         Me.Label_Gender.Location = New System.Drawing.Point(6, 121)
         Me.Label_Gender.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label_Gender.Name = "Label_Gender"
-        Me.Label_Gender.Size = New System.Drawing.Size(157, 27)
+        Me.Label_Gender.Size = New System.Drawing.Size(232, 27)
         Me.Label_Gender.TabIndex = 4
-        Me.Label_Gender.Text = "Patient Gender"
+        Me.Label_Gender.Text = "Patient Gender - الجنس "
         '
         'TextBox_PatientName
         '
         Me.TextBox_PatientName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox_PatientName.Location = New System.Drawing.Point(227, 62)
+        Me.TextBox_PatientName.Location = New System.Drawing.Point(334, 69)
         Me.TextBox_PatientName.Name = "TextBox_PatientName"
         Me.TextBox_PatientName.Size = New System.Drawing.Size(412, 34)
         Me.TextBox_PatientName.TabIndex = 3
@@ -234,23 +234,23 @@ Partial Class Form1
         Me.Label_PatientName.Location = New System.Drawing.Point(6, 69)
         Me.Label_PatientName.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label_PatientName.Name = "Label_PatientName"
-        Me.Label_PatientName.Size = New System.Drawing.Size(143, 27)
+        Me.Label_PatientName.Size = New System.Drawing.Size(258, 27)
         Me.Label_PatientName.TabIndex = 2
-        Me.Label_PatientName.Text = "Patient Name"
+        Me.Label_PatientName.Text = "Patient Name - اسم المريض"
         '
         'TextBox_PatientID
         '
         Me.TextBox_PatientID.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox_PatientID.Location = New System.Drawing.Point(227, 8)
+        Me.TextBox_PatientID.Location = New System.Drawing.Point(334, 15)
         Me.TextBox_PatientID.Name = "TextBox_PatientID"
         Me.TextBox_PatientID.Size = New System.Drawing.Size(412, 34)
         Me.TextBox_PatientID.TabIndex = 1
         '
         'Panel_RegisterFingerPrient
         '
-        Me.Panel_RegisterFingerPrient.BackColor = System.Drawing.SystemColors.Control
-        Me.Panel_RegisterFingerPrient.Controls.Add(Me.ButtonOK)
+        Me.Panel_RegisterFingerPrient.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Panel_RegisterFingerPrient.Controls.Add(Me.Button_Done)
         Me.Panel_RegisterFingerPrient.Controls.Add(Me.Panel_Images)
         Me.Panel_RegisterFingerPrient.Controls.Add(Me.Finger_10)
         Me.Panel_RegisterFingerPrient.Controls.Add(Me.Finger_9)
@@ -272,17 +272,17 @@ Partial Class Form1
         Me.Panel_RegisterFingerPrient.TabIndex = 14
         Me.Panel_RegisterFingerPrient.Visible = False
         '
-        'ButtonOK
+        'Button_Done
         '
-        Me.ButtonOK.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.Button_Done.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonOK.Location = New System.Drawing.Point(327, 542)
-        Me.ButtonOK.Name = "ButtonOK"
-        Me.ButtonOK.Size = New System.Drawing.Size(116, 50)
-        Me.ButtonOK.TabIndex = 19
-        Me.ButtonOK.Text = "OK"
-        Me.ButtonOK.UseVisualStyleBackColor = True
-        Me.ButtonOK.Visible = False
+        Me.Button_Done.Location = New System.Drawing.Point(327, 542)
+        Me.Button_Done.Name = "Button_Done"
+        Me.Button_Done.Size = New System.Drawing.Size(116, 50)
+        Me.Button_Done.TabIndex = 19
+        Me.Button_Done.Text = "Done - تم"
+        Me.Button_Done.UseVisualStyleBackColor = True
+        Me.Button_Done.Visible = False
         '
         'Panel_Images
         '
@@ -513,7 +513,8 @@ Partial Class Form1
         Me.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.Name = "Form1"
         Me.ShowIcon = False
-        Me.Text = "Ministry of Health - Registration Patient "
+        Me.ShowInTaskbar = False
+        Me.Text = "Registration التسجيل"
         Me.Panel_RegistrationInfo.ResumeLayout(False)
         Me.Panel_RegistrationInfo.PerformLayout()
         Me.GroupBox_ExtraInfo.ResumeLayout(False)
@@ -568,5 +569,5 @@ Partial Class Form1
     Friend WithEvents PictureBoxSample_1 As PictureBox
     Friend WithEvents PictureBoxSample_3 As PictureBox
     Friend WithEvents CheckBox_ReaderConnected As CheckBox
-    Friend WithEvents ButtonOK As Button
+    Friend WithEvents Button_Done As Button
 End Class

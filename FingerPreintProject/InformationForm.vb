@@ -41,7 +41,7 @@ Public Class InformationForm
     End Sub
 
     Private Sub InformationForm_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        MainForm.InformationsMenu.Enabled = True
+        MainForm.HospitalMenu.Enabled = True
         StopCapture()
     End Sub
 
@@ -152,7 +152,8 @@ Public Class InformationForm
         Dim query As String = "SELECT * FROM informations_tb WHERE id = " & Val(TextBox_PatientID.Text)  ' ID
 
         Try
-            conDB.Open()
+            'open
+            If conDB.State = ConnectionState.Closed Then conDB.Open()
 
             Dim cmd As New SQLiteCommand(query, conDB)
             Dim Reader As SQLiteDataReader
@@ -174,11 +175,13 @@ Public Class InformationForm
                 TextBox_Gender_BloodType.Text = Nothing
                 TextBox_ExtraInfo.Text = Nothing
                 MsgBox("no results found")
-                conDB.Close()
+                'close
+                If conDB.State = ConnectionState.Open Then conDB.Close()
                 Return False
             End If
 
-            conDB.Close()
+            'close
+            If conDB.State = ConnectionState.Open Then conDB.Close()
 
         Catch ex As Exception
             conDB.Dispose()
@@ -187,6 +190,8 @@ Public Class InformationForm
             Return False
         End Try
 
+        'close
+        If conDB.State = ConnectionState.Open Then conDB.Close()
         Return True
     End Function
 
@@ -298,7 +303,9 @@ Public Class InformationForm
 
             Dim conDB As New SQLiteConnection(DBpath)
             Try
-                conDB.Open()
+                'open
+                If conDB.State = ConnectionState.Closed Then conDB.Open()
+
                 Dim query As String
                 query = "SELECT * FROM fingerprints_tb"
 
@@ -349,7 +356,8 @@ Public Class InformationForm
 
                 ' MsgBox("loaded all")
 
-                conDB.Close()
+                'close
+                If conDB.State = ConnectionState.Open Then conDB.Close()
 
                 '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 theMessage(String.Format("False Accept Rate (FAR) = {0}", result.FARAchieved)) ' Show "False accept rate" value
@@ -361,6 +369,8 @@ Public Class InformationForm
 
                 theMessage("## no Template found. ##")
             End Try
+            'close
+            If conDB.State = ConnectionState.Open Then conDB.Close()
         End If
 
         'show this message only if no result found 
@@ -369,5 +379,7 @@ Public Class InformationForm
             PictuerBox_Fingerprient.Image = Nothing 'reset
             justMakeFingerDefualtColor() 'reset
         End If
+
+
     End Sub
 End Class

@@ -20,7 +20,7 @@ Public Class Form1
         Panel_Images.Invoke(Sub()
                                 Panel_Images.Visible = True
                             End Sub)
-
+        StopCapture() 'added maybe error will happned
         StartCapture()
     End Sub
 
@@ -86,45 +86,79 @@ Public Class Form1
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        ' check the  requirements fileds
         If Not isValidatedInfo() Then
+            MessageBox.Show("The requirements are incomplete" + vbNewLine + "المتطلبات غير كاملة",
+            Me.Text, ' form title
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Error)
             Exit Sub
         End If
 
-        'If Not RegistrationgInfo_ToDB() Then ' true = added to DB | false = error happned ,s o not added to DB
-        '    Exit Sub
-        'End If
-        RegistrationgInfo_ToDB()
+        'check ID in DB Registered or not
+        If is_ID_Exist_In_DB(Val(TextBox_PatientID.Text)) Then
+            'we found this ID in DB please change the ID 
+            Label_PatientID.ForeColor = Color.Red
+            MessageBox.Show("This ID is Registered" + vbNewLine + "هذه الهوية مسجلة",
+            Me.Text, ' form title
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
+
+        If Not RegistrationgInfo_ToDB() Then ' true = added to DB | false = error happned ,s o not added to DB
+            'Not added in DB , error happned
+            MessageBox.Show("We Can't Register an Error Happened" + vbNewLine + "لا يمكننا التسجيل حدث خطأ",
+            Me.Text, ' form title
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Error)
+            Exit Sub
+        End If
 
         Panel_RegisterFingerPrient.Visible = True
         Panel_RegistrationInfo.Visible = False
 
     End Sub
+    Private Sub colorFontBlack_the5Labels()
+        Label_PatientID.ForeColor = Color.Black
+        Label_PatientName.ForeColor = Color.Black
+        Label_Gender.ForeColor = Color.Black
+        Label_BloodType.ForeColor = Color.Black
+    End Sub
 
     Private Function isValidatedInfo()
-        '' add here to checi Id not recorded before in DB
+        ' this is using for return after checking all requiremnts
+        Dim isItVallied As Boolean = True 'assume every things are valid
 
+        'reset colors to black for updating red colors
+        colorFontBlack_the5Labels()
+
+        '' validation checi below
         If TextBox_PatientID.Text = Nothing Then
-            MsgBox("Please Enter the Patient's ID")
-            Return False
-
-        ElseIf TextBox_PatientName.Text = Nothing Then
-            MsgBox("Please Enter The Patient's Name")
-            Return False
-
-        ElseIf RadioButton_Male.Checked = False And RadioButton_Female.Checked = False Then
-            MsgBox("Please Select The Patient's Gender")
-            Return False
-
-        ElseIf ComboBox_BloodType.Text = Nothing Then
-            MsgBox("Please Select The Patient's Blood Type")
-            Return False
-
+            Label_PatientID.ForeColor = Color.Red
         End If
 
 
+        '' add here to checi Id not recorded before in DB
 
 
-        Return True 'everything validated good 
+        If TextBox_PatientName.Text = Nothing Then
+            Label_PatientName.ForeColor = Color.Red
+            isItVallied = False
+        End If
+
+        If RadioButton_Male.Checked = False And RadioButton_Female.Checked = False Then
+            Label_Gender.ForeColor = Color.Red
+            isItVallied = False
+        End If
+
+        If ComboBox_BloodType.Text = Nothing Then
+            Label_BloodType.ForeColor = Color.Red
+            isItVallied = False
+        End If
+
+        Return isItVallied 'everything validated good 
     End Function
 #Region "theFingers"
     Private Sub Finger_1_Click(sender As Object, e As EventArgs) Handles Finger_1.Click
@@ -168,7 +202,6 @@ Public Class Form1
 
 #End Region
 
-
     Private Function RegistrationgInfo_ToDB()
         'perepariong Data
         Dim theGender As String = "Other"
@@ -179,19 +212,18 @@ Public Class Form1
         End If
 
         'preparing the connection 
-        Dim conDB As New SQLiteConnection(ModuleDB.DBpath)
+        Dim conDB1 As New SQLiteConnection(ModuleDB.DBpath)
+        Dim conDB2 As New SQLiteConnection(ModuleDB.DBpath)
+
         Dim query1 As String
         Dim query2 As String
-
+        query1 = "insert into informations_tb (id,name,gender,BOD,bloodtype,extraInfo) values (@id,@name,@gender,@BOD,@bloodtype,@extraInfo)"
+        query2 = "insert into fingerprints_tb (id) values (@id)"
         Try
-            conDB.Open()
 
-            query1 = "insert into informations_tb (id,name,gender,BOD,bloodtype,extraInfo) values (@id,@name,@gender,@BOD,@bloodtype,@extraInfo)"
-            query2 = "insert into fingerprints_tb (id) values (@id)"
-
-            Dim cmd1 As New SQLiteCommand(query1, conDB)
-            Dim cmd2 As New SQLiteCommand(query2, conDB)
-
+            '# 1
+            If conDB1.State = ConnectionState.Closed Then conDB1.Open()
+            Dim cmd1 As New SQLiteCommand(query1, conDB1)
             With cmd1.Parameters
                 .AddWithValue("id", Val(TextBox_PatientID.Text))
                 .AddWithValue("name", TextBox_PatientName.Text)
@@ -201,22 +233,25 @@ Public Class Form1
                 .AddWithValue("extraInfo", TextBox_ExtraInfo.Text)
             End With
             cmd1.ExecuteNonQuery()
+            If conDB1.State = ConnectionState.Open Then conDB1.Close()
 
-            With cmd2.Parameters
-                .AddWithValue("id", Val(TextBox_PatientID.Text))
-            End With
+            '# 2
+            If conDB2.State = ConnectionState.Closed Then conDB2.Open()
+            Dim cmd2 As New SQLiteCommand(query2, conDB2)
+            cmd2.Parameters.AddWithValue("id", Val(TextBox_PatientID.Text))
             cmd2.ExecuteNonQuery()
+            If conDB2.State = ConnectionState.Open Then conDB2.Close()
 
-            '  MsgBox("done registered info")
-
-            conDB.Close()
         Catch ex As Exception
-            conDB.Dispose()
-            conDB = Nothing
+            conDB1.Dispose()
+            conDB2.Dispose()
+            conDB1 = Nothing
+            conDB2 = Nothing
             MsgBox(ex.Message)
-            Return False
+            Return False 'error happned , so not registred
         End Try
-        Return True
+
+        Return True ' added  in DB
     End Function
 
     Private Sub Register_update_Fingerprient_ToDB(theMaskFinger As Integer, Template As DPFP.Template)
@@ -241,8 +276,8 @@ Public Class Form1
             conDB.Close()
 
             justMakeFingerGreen(theMaskFinger) ' make the label green   finger_12345678910
-            ButtonOK.Invoke(Sub()
-                                ButtonOK.Visible = True
+            Button_Done.Invoke(Sub()
+                                Button_Done.Visible = True
                             End Sub)
         Catch ex As Exception
             conDB.Dispose()
@@ -422,10 +457,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
-        ' StartCapture() 'rm
 
-    End Sub
 
     Private Sub TextBox_PatientID_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox_PatientID.KeyPress
         If Not IsNumeric(e.KeyChar) And Not e.KeyChar = ChrW(Keys.Back) Then
@@ -433,11 +465,49 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub ButtonOK_Click(sender As Object, e As EventArgs) Handles ButtonOK.Click
+    Private Sub ButtonOK_Click(sender As Object, e As EventArgs) Handles Button_Done.Click
         Close()
     End Sub
 
     Private Sub Form1_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        MainForm.RegistrationMenu.Enabled = True
+        MainForm.MinistryOfHealthMenu.Enabled = True
+    End Sub
+    Private Function is_ID_Exist_In_DB(theID As Integer)
+        Dim isITinDB As Boolean = False  ' asuming nit in DB
+
+        'this funcing to search in DB if the peasitn already registred ,  ID not doblicated
+
+        'preparing thhe connection
+        Dim conDB As New SQLiteConnection(ModuleDB.DBpath)
+        Dim query As String = "SELECT * FROM informations_tb WHERE id=@id"
+
+        Try
+            conDB.Open()
+            Dim cmd As New SQLiteCommand(query, conDB)
+            cmd.Parameters.AddWithValue("id", theID)
+
+            Using reader As SQLiteDataReader = cmd.ExecuteReader()
+                If reader.HasRows Then
+                    ' User already exists
+                    isITinDB = True
+                Else
+                    ' User does not exist, add them
+                    isITinDB = False
+                End If
+            End Using
+
+            conDB.Close()
+        Catch ex As Exception
+            conDB.Dispose()
+            conDB = Nothing
+            MsgBox(ex.Message)
+            isITinDB = True ' yes in DB cuz error happneed 
+        End Try
+
+        Return isITinDB
+    End Function
+
+    Private Sub Form1_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+        StopCapture()
     End Sub
 End Class

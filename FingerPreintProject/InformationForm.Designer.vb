@@ -231,11 +231,11 @@ Partial Class InformationForm
         '
         'Button_Search
         '
-        Me.Button_Search.Location = New System.Drawing.Point(336, 84)
+        Me.Button_Search.Location = New System.Drawing.Point(331, 87)
         Me.Button_Search.Name = "Button_Search"
-        Me.Button_Search.Size = New System.Drawing.Size(125, 48)
+        Me.Button_Search.Size = New System.Drawing.Size(125, 83)
         Me.Button_Search.TabIndex = 6
-        Me.Button_Search.Text = "Search"
+        Me.Button_Search.Text = "Search  بحث"
         Me.Button_Search.UseVisualStyleBackColor = True
         '
         'TextBox_PatientID
@@ -248,12 +248,12 @@ Partial Class InformationForm
         'Label_PatientID
         '
         Me.Label_PatientID.AutoSize = True
-        Me.Label_PatientID.Location = New System.Drawing.Point(345, 14)
+        Me.Label_PatientID.Location = New System.Drawing.Point(298, 10)
         Me.Label_PatientID.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label_PatientID.Name = "Label_PatientID"
-        Me.Label_PatientID.Size = New System.Drawing.Size(111, 27)
+        Me.Label_PatientID.Size = New System.Drawing.Size(228, 27)
         Me.Label_PatientID.TabIndex = 2
-        Me.Label_PatientID.Text = "Patient ID"
+        Me.Label_PatientID.Text = "Patient ID  هوية المريض"
         '
         'Panel_ShowInformations
         '
@@ -332,7 +332,9 @@ Partial Class InformationForm
         Me.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.Name = "InformationForm"
         Me.ShowIcon = False
-        Me.Text = "InformationForm"
+        Me.ShowInTaskbar = False
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.Text = "Search بحث"
         Me.Panel_Searching.ResumeLayout(False)
         Me.Panel_Searching.PerformLayout()
         CType(Me.PictuerBox_Fingerprient, System.ComponentModel.ISupportInitialize).EndInit()

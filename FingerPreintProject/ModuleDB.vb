@@ -7,4 +7,11 @@ Module ModuleDB
         MainForm.ToolStripStatusLabel.Text = message
     End Sub
 
+    'open
+    ' If conDB.State = ConnectionState.Closed Then conDB.Open()
+
+    'close
+    'If conDB.State = ConnectionState.Open Then conDB.Close()
+
+
 End Module
