@@ -20,6 +20,8 @@ Public Class InformationForm
 
     Private Sub InformationForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        ' StopCapture()
+
         theMessage("--- started ---")
 
         Verificator_ali = New DPFP.Verification.Verification()
@@ -30,10 +32,10 @@ Public Class InformationForm
             If (Not ali_Capturer Is Nothing) Then
                 ali_Capturer.EventHandler = Me                              ' Subscribe for capturing events.
             Else
-                theMessage("Can't initiate capture operation!")
+                theMessage("Can't initiate capture operation! - info Form load")
             End If
         Catch ex As Exception
-            MessageBox.Show("Can't initiate capture operation!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Can't initiate capture operation! - info Form load", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
         'loadTemplate(ModuleDB.theTemplate)
@@ -48,6 +50,7 @@ Public Class InformationForm
 
     '_________________________________________________________________________
     Private Sub justMakeFingerDefualtColor()
+        StopCapture() ' stop the before , and restart again with new config lol ali  however do not removed this 
         Finger_1.BackColor = Color.DarkCyan
         Finger_2.BackColor = Color.DarkCyan
         Finger_3.BackColor = Color.DarkCyan
@@ -219,9 +222,9 @@ Public Class InformationForm
         If (Not ali_Capturer Is Nothing) Then
             Try
                 ali_Capturer.StartCapture()
-                theMessage("Using the fingerprint reader, scan your fingerprint.")
+                theMessage("StartCapture - infoForem")
             Catch ex As Exception
-                theMessage("Can't initiate capture!")
+                theMessage("Can't initiate capture! - info form")
             End Try
         End If
     End Sub
@@ -230,8 +233,9 @@ Public Class InformationForm
         If (Not ali_Capturer Is Nothing) Then
             Try
                 ali_Capturer.StopCapture()
+                theMessage("StopCapture - infoForem")
             Catch ex As Exception
-                theMessage("Can't terminate capture!")
+                theMessage("Can't terminate capture! - info form")
             End Try
         End If
     End Sub
@@ -253,26 +257,25 @@ Public Class InformationForm
     End Sub
 
     Public Sub OnFingerGone(Capture As Object, ReaderSerialNumber As String) Implements EventHandler.OnFingerGone
-        theMessage("The finger was removed from the fingerprint reader.")
+        theMessage("The finger was removed from the fingerprint reader.info form")
     End Sub
 
     Public Sub OnFingerTouch(Capture As Object, ReaderSerialNumber As String) Implements EventHandler.OnFingerTouch
-        theMessage("The fingerprint reader was touched.")
+        theMessage("The fingerprint reader was touched. info form")
     End Sub
 
     Public Sub OnReaderConnect(Capture As Object, ReaderSerialNumber As String) Implements EventHandler.OnReaderConnect
-        theMessage("The fingerprint reader was connected.")
+        'no need this here, it is working in MainForm
     End Sub
-
     Public Sub OnReaderDisconnect(Capture As Object, ReaderSerialNumber As String) Implements EventHandler.OnReaderDisconnect
-        theMessage("The fingerprint reader was disconnected.")
+        'no need this here, it is working in MainForm
     End Sub
 
     Public Sub OnSampleQuality(Capture As Object, ReaderSerialNumber As String, CaptureFeedback As CaptureFeedback) Implements EventHandler.OnSampleQuality
         If CaptureFeedback = DPFP.Capture.CaptureFeedback.Good Then
-            theMessage("The quality of the fingerprint sample is good.")
+            theMessage("The quality of the fingerprint sample is good. info form")
         Else
-            theMessage("The quality of the fingerprint sample is poor.")
+            theMessage("The quality of the fingerprint sample is poor. info form")
         End If
     End Sub
 
@@ -360,14 +363,16 @@ Public Class InformationForm
                 If conDB.State = ConnectionState.Open Then conDB.Close()
 
                 '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                theMessage(String.Format("False Accept Rate (FAR) = {0}", result.FARAchieved)) ' Show "False accept rate" value
+                Invoke(Sub()
+                           theMessage1(String.Format("False Accept Rate (FAR) = {0} = معدل القبول للخطأ", result.FARAchieved)) ' Show "False accept rate" value
+                       End Sub)
 
             Catch ex As Exception
                 conDB.Dispose()
                 conDB = Nothing
                 MsgBox(ex.Message)
 
-                theMessage("## no Template found. ##")
+                theMessage("## no Template found. ## info form")
             End Try
             'close
             If conDB.State = ConnectionState.Open Then conDB.Close()
@@ -375,7 +380,7 @@ Public Class InformationForm
 
         'show this message only if no result found 
         If Not isFPFounded Then
-            MsgBox("the Fingerpreint not found in our DB")
+            MsgBox("the Fingerpreint not found in our DB" + vbNewLine + "عفوا لاتوجد بصمة مطابقة")
             PictuerBox_Fingerprient.Image = Nothing 'reset
             justMakeFingerDefualtColor() 'reset
         End If

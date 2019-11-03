@@ -12,6 +12,7 @@ Public Class Form1
     Private theMaskFingeris As Integer = 0
 
     Private Sub EnrollFinger(lableName As Label, MaskFinger As String)
+        StopCapture() 'added maybe error will happned
         lableName.BackColor = Color.Yellow
         startingConfigNew()
         theMaskFingeris = MaskFinger
@@ -20,7 +21,7 @@ Public Class Form1
         Panel_Images.Invoke(Sub()
                                 Panel_Images.Visible = True
                             End Sub)
-        StopCapture() 'added maybe error will happned
+
         StartCapture()
     End Sub
 
@@ -386,21 +387,10 @@ Public Class Form1
     End Sub
 
     Public Sub OnReaderConnect(Capture As Object, ReaderSerialNumber As String) Implements EventHandler.OnReaderConnect
-        theMessage("The fingerprint reader was connected.")
-        CheckBox_ReaderConnected.Invoke(Sub()
-                                            CheckBox_ReaderConnected.Checked = True
-                                            CheckBox_ReaderConnected.Text = "Connected"
-                                            CheckBox_ReaderConnected.ForeColor = Color.Blue
-                                        End Sub)
+        'no need this here, it is working in MainForm
     End Sub
-
     Public Sub OnReaderDisconnect(Capture As Object, ReaderSerialNumber As String) Implements EventHandler.OnReaderDisconnect
-        theMessage("The fingerprint reader was disconnected.")
-        CheckBox_ReaderConnected.Invoke(Sub()
-                                            CheckBox_ReaderConnected.Checked = False
-                                            CheckBox_ReaderConnected.Text = "Disconnected"
-                                            CheckBox_ReaderConnected.ForeColor = Color.Red
-                                        End Sub)
+        'no need this here, it is working in MainForm
     End Sub
 
     Public Sub OnSampleQuality(Capture As Object, ReaderSerialNumber As String, CaptureFeedback As CaptureFeedback) Implements EventHandler.OnSampleQuality

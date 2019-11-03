@@ -41,7 +41,6 @@ Partial Class Form1
         Me.Panel_RegisterFingerPrient = New System.Windows.Forms.Panel()
         Me.Button_Done = New System.Windows.Forms.Button()
         Me.Panel_Images = New System.Windows.Forms.Panel()
-        Me.CheckBox_ReaderConnected = New System.Windows.Forms.CheckBox()
         Me.PictureBoxSample_2 = New System.Windows.Forms.PictureBox()
         Me.Label_Status = New System.Windows.Forms.Label()
         Me.PictureBoxSample_4 = New System.Windows.Forms.PictureBox()
@@ -111,7 +110,7 @@ Partial Class Form1
         Me.Button1.Location = New System.Drawing.Point(327, 553)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(136, 50)
-        Me.Button1.TabIndex = 13
+        Me.Button1.TabIndex = 8
         Me.Button1.Text = "Next - التالي"
         Me.Button1.UseVisualStyleBackColor = True
         '
@@ -123,7 +122,7 @@ Partial Class Form1
         Me.ComboBox_BloodType.Location = New System.Drawing.Point(334, 235)
         Me.ComboBox_BloodType.Name = "ComboBox_BloodType"
         Me.ComboBox_BloodType.Size = New System.Drawing.Size(95, 34)
-        Me.ComboBox_BloodType.TabIndex = 12
+        Me.ComboBox_BloodType.TabIndex = 6
         '
         'Label_BloodType
         '
@@ -156,7 +155,7 @@ Partial Class Form1
         Me.TextBox_ExtraInfo.Name = "TextBox_ExtraInfo"
         Me.TextBox_ExtraInfo.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.TextBox_ExtraInfo.Size = New System.Drawing.Size(762, 204)
-        Me.TextBox_ExtraInfo.TabIndex = 0
+        Me.TextBox_ExtraInfo.TabIndex = 7
         '
         'Label_DOBFormat
         '
@@ -186,7 +185,7 @@ Partial Class Form1
         Me.Date_DOB.Location = New System.Drawing.Point(334, 175)
         Me.Date_DOB.Name = "Date_DOB"
         Me.Date_DOB.Size = New System.Drawing.Size(269, 34)
-        Me.Date_DOB.TabIndex = 7
+        Me.Date_DOB.TabIndex = 5
         '
         'RadioButton_Female
         '
@@ -194,8 +193,7 @@ Partial Class Form1
         Me.RadioButton_Female.Location = New System.Drawing.Point(592, 124)
         Me.RadioButton_Female.Name = "RadioButton_Female"
         Me.RadioButton_Female.Size = New System.Drawing.Size(154, 31)
-        Me.RadioButton_Female.TabIndex = 6
-        Me.RadioButton_Female.TabStop = True
+        Me.RadioButton_Female.TabIndex = 4
         Me.RadioButton_Female.Text = "Female - أنثى"
         Me.RadioButton_Female.UseVisualStyleBackColor = True
         '
@@ -205,7 +203,7 @@ Partial Class Form1
         Me.RadioButton_Male.Location = New System.Drawing.Point(334, 124)
         Me.RadioButton_Male.Name = "RadioButton_Male"
         Me.RadioButton_Male.Size = New System.Drawing.Size(131, 31)
-        Me.RadioButton_Male.TabIndex = 5
+        Me.RadioButton_Male.TabIndex = 3
         Me.RadioButton_Male.Text = "Male - ذكر"
         Me.RadioButton_Male.UseVisualStyleBackColor = True
         '
@@ -226,7 +224,7 @@ Partial Class Form1
         Me.TextBox_PatientName.Location = New System.Drawing.Point(334, 69)
         Me.TextBox_PatientName.Name = "TextBox_PatientName"
         Me.TextBox_PatientName.Size = New System.Drawing.Size(412, 34)
-        Me.TextBox_PatientName.TabIndex = 3
+        Me.TextBox_PatientName.TabIndex = 2
         '
         'Label_PatientName
         '
@@ -280,13 +278,13 @@ Partial Class Form1
         Me.Button_Done.Name = "Button_Done"
         Me.Button_Done.Size = New System.Drawing.Size(116, 50)
         Me.Button_Done.TabIndex = 19
+        Me.Button_Done.TabStop = False
         Me.Button_Done.Text = "Done - تم"
         Me.Button_Done.UseVisualStyleBackColor = True
         Me.Button_Done.Visible = False
         '
         'Panel_Images
         '
-        Me.Panel_Images.Controls.Add(Me.CheckBox_ReaderConnected)
         Me.Panel_Images.Controls.Add(Me.PictureBoxSample_2)
         Me.Panel_Images.Controls.Add(Me.Label_Status)
         Me.Panel_Images.Controls.Add(Me.PictureBoxSample_4)
@@ -297,22 +295,6 @@ Partial Class Form1
         Me.Panel_Images.Size = New System.Drawing.Size(433, 184)
         Me.Panel_Images.TabIndex = 18
         Me.Panel_Images.Visible = False
-        '
-        'CheckBox_ReaderConnected
-        '
-        Me.CheckBox_ReaderConnected.AutoSize = True
-        Me.CheckBox_ReaderConnected.Checked = True
-        Me.CheckBox_ReaderConnected.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBox_ReaderConnected.Enabled = False
-        Me.CheckBox_ReaderConnected.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox_ReaderConnected.Font = New System.Drawing.Font("Times New Roman", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox_ReaderConnected.ForeColor = System.Drawing.Color.Blue
-        Me.CheckBox_ReaderConnected.Location = New System.Drawing.Point(160, 3)
-        Me.CheckBox_ReaderConnected.Name = "CheckBox_ReaderConnected"
-        Me.CheckBox_ReaderConnected.Size = New System.Drawing.Size(118, 27)
-        Me.CheckBox_ReaderConnected.TabIndex = 19
-        Me.CheckBox_ReaderConnected.Text = "Connected"
-        Me.CheckBox_ReaderConnected.UseVisualStyleBackColor = False
         '
         'PictureBoxSample_2
         '
@@ -568,6 +550,5 @@ Partial Class Form1
     Friend WithEvents PictureBoxSample_4 As PictureBox
     Friend WithEvents PictureBoxSample_1 As PictureBox
     Friend WithEvents PictureBoxSample_3 As PictureBox
-    Friend WithEvents CheckBox_ReaderConnected As CheckBox
     Friend WithEvents Button_Done As Button
 End Class

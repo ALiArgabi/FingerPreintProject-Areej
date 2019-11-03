@@ -39,6 +39,8 @@ Partial Class MainForm
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.ReaderStatus_C_D = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.FAC_message = New System.Windows.Forms.ToolStripStatusLabel()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -65,7 +67,7 @@ Partial Class MainForm
         'InformationMenuItem
         '
         Me.InformationMenuItem.Name = "InformationMenuItem"
-        Me.InformationMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.InformationMenuItem.Size = New System.Drawing.Size(168, 26)
         Me.InformationMenuItem.Text = "Search بحث"
         '
         'MinistryOfHealthMenu
@@ -121,7 +123,7 @@ Partial Class MainForm
         'StatusStrip
         '
         Me.StatusStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel})
+        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReaderStatus_C_D, Me.ToolStripStatusLabel, Me.FAC_message})
         Me.StatusStrip.Location = New System.Drawing.Point(0, 532)
         Me.StatusStrip.Name = "StatusStrip"
         Me.StatusStrip.Padding = New System.Windows.Forms.Padding(1, 0, 16, 0)
@@ -134,6 +136,18 @@ Partial Class MainForm
         Me.ToolStripStatusLabel.Name = "ToolStripStatusLabel"
         Me.ToolStripStatusLabel.Size = New System.Drawing.Size(76, 20)
         Me.ToolStripStatusLabel.Text = "Ali Argabi"
+        '
+        'ReaderStatus_C_D
+        '
+        Me.ReaderStatus_C_D.BackColor = System.Drawing.Color.Transparent
+        Me.ReaderStatus_C_D.Name = "ReaderStatus_C_D"
+        Me.ReaderStatus_C_D.Size = New System.Drawing.Size(15, 20)
+        Me.ReaderStatus_C_D.Text = "•"
+        '
+        'FAC_message
+        '
+        Me.FAC_message.Name = "FAC_message"
+        Me.FAC_message.Size = New System.Drawing.Size(0, 20)
         '
         'MainForm
         '
@@ -174,4 +188,6 @@ Partial Class MainForm
     Friend WithEvents InformationMenuItem As ToolStripMenuItem
     Friend WithEvents RegistrationMenuItem As ToolStripMenuItem
     Friend WithEvents UpdatingMenuItem As ToolStripMenuItem
+    Friend WithEvents ReaderStatus_C_D As ToolStripStatusLabel
+    Friend WithEvents FAC_message As ToolStripStatusLabel
 End Class

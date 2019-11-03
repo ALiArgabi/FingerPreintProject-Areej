@@ -48,3 +48,4 @@ C:\Users\Ali Argabi\Documents\GitHub\Ali\FingerPreintProject-Areej\FingerPreintP
 C:\Users\Ali Argabi\Documents\GitHub\Ali\FingerPreintProject-Areej\FingerPreintProject\obj\Debug\FingerPreintProject.xml
 C:\Users\Ali Argabi\Documents\GitHub\Ali\FingerPreintProject-Areej\FingerPreintProject\obj\Debug\FingerPreintProject.pdb
 C:\Users\Ali Argabi\Documents\GitHub\Ali\FingerPreintProject-Areej\FingerPreintProject\obj\Debug\FingerPreintProject.vbprojAssemblyReference.cache
+C:\Users\Ali Argabi\Documents\GitHub\Ali\FingerPreintProject-Areej\FingerPreintProject\obj\Debug\FingerPreintProject.TableForm.resources
